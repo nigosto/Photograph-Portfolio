@@ -1,0 +1,46 @@
+.App {
+    display: flex;
+
+    .navigation {
+        position: fixed;
+        width: 20%;
+        margin-top: 3rem;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .site-logo {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 3rem;
+        }
+
+        nav {
+            flex-grow: 1;
+
+            ul {
+                font-size: 1.3em;
+                text-align: center;
+
+                li {
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+
+        .contacts {
+            position: relative;
+            bottom: 20%;
+
+            ul {
+                display: flex;
+                text-align: center;
+
+                li {
+                    flex: 1 0 20px;
+                }
+            }
+        }
+    }
+}

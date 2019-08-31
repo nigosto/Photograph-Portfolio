@@ -1,0 +1,112 @@
+@import "mixins";
+
+.site-main {
+  padding-left: 20%;
+  width: 100%;
+
+  .lightbox {
+    img {
+      width: 1000px;
+    }
+  }
+
+  .spinner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-flow: dense;
+    padding: 1rem;
+
+    &-item {
+      margin: 0.5rem;
+
+      &.landscape {
+        grid-column: span 2;
+        grid-row: span 1;
+
+        .img-container {
+          position: relative;
+          overflow: hidden;
+          animation: popUp 0.5s ease-in-out;
+
+          &::before {
+            @include pseudo;
+            padding-top: 47.5%;
+          }
+
+          img {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+          }
+        }
+      }
+
+      &.portrait {
+        grid-column: span 1;
+        grid-row: span 2;
+
+        .img-container {
+          position: relative;
+          overflow: hidden;
+          animation: popUp 0.5s ease-in-out;
+
+          &::before {
+            @include pseudo;
+            padding-top: 200%;
+          }
+
+          img {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 100%;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blur {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  to {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}

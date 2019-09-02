@@ -19,11 +19,13 @@ export default class All extends React.Component {
                 {
                     this.state.counter === this.state.images.length ?
                         <ul className="gallery">
+                            <div className="first">All Images</div>
                             {
                                 this.state.images.map((img, i) => {
                                     return <li className={"gallery-item " + img.orientation}>
-                                        <div className="img-container">
-                                            <img alt="" key={i} src={img.src} onClick={() => this.setState({ isOpen: true, src: img.src })} />
+                                        <div className="img-container" style={{animationDelay: `${0.2 + (i*2)/10}s`}}>
+                                            <img alt="" key={i} src={img.src} onClick={() => this.setState({ isOpen: true, src: img.src })}/>
+                                            <div className="panel" onClick={() => this.setState({ isOpen: true, src: img.src })} >+</div>
                                         </div>
                                     </li>
 
@@ -54,5 +56,6 @@ export default class All extends React.Component {
                 this.setState({ counter: this.state.counter + 1 })
             }
         });
+        
     }
 }

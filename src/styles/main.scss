@@ -1,8 +1,13 @@
 @import "mixins";
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
 
 .site-main {
   padding-left: 20%;
   width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 0;
+  }
 
   .lightbox {
     img {
@@ -20,10 +25,46 @@
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr;
     grid-auto-flow: dense;
     padding: 1rem;
+
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media screen and (max-width: 960px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .first {
+      grid-column: span 2;
+      grid-row: span 2;
+      background: #000;
+      color: white;
+      margin: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.75em;
+      font-family: "Lobster", cursive;
+      animation: popUp 0.5s ease-in-out;
+      opacity: 0;
+      animation-fill-mode: forwards;
+
+      @media screen and (max-width: 480px) {
+        display: none;
+      }
+    }
 
     &-item {
       margin: 0.5rem;
@@ -36,6 +77,8 @@
           position: relative;
           overflow: hidden;
           animation: popUp 0.5s ease-in-out;
+          opacity: 0;
+          animation-fill-mode: forwards;
 
           &::before {
             @include pseudo;
@@ -52,6 +95,29 @@
             height: auto;
             cursor: pointer;
           }
+
+          .panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: height 0.3s ease-in;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+            cursor: pointer;
+            font-weight: bold;
+          }
+
+          &:hover .panel {
+            font-size: 2em;
+            height: 100%;
+            color: white;
+          }
         }
       }
 
@@ -63,6 +129,8 @@
           position: relative;
           overflow: hidden;
           animation: popUp 0.5s ease-in-out;
+          opacity: 0;
+          animation-fill-mode: forwards;
 
           &::before {
             @include pseudo;
@@ -78,6 +146,29 @@
             width: auto;
             height: 100%;
             cursor: pointer;
+          }
+
+          .panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: height 0.3s ease-in;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+            cursor: pointer;
+            font-weight: bold;
+          }
+
+          &:hover .panel {
+            color: white;
+            font-size: 2em;
+            height: 100%;
           }
         }
       }

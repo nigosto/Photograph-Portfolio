@@ -24,8 +24,9 @@ export default class Category extends React.Component {
                             {
                                 this.state.images.filter(i => i.category === this.props.match.params.id).map((img, i) => {
                                     return <li className={"gallery-item " + img.orientation}>
-                                        <div className="img-container">
+                                        <div className="img-container" style={{animationDelay: `${0.2 + (i*2)/10}s`}}>
                                             <img alt="" key={i} src={img.src} onClick={() => this.setState({ isOpen: true, src: img.src })} />
+                                            <div className="panel" onClick={() => this.setState({ isOpen: true, src: img.src })} >+</div>
                                         </div>
                                     </li>
 

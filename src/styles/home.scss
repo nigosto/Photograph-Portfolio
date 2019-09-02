@@ -1,64 +1,74 @@
-@import 'mixins';
+@import "mixins";
 
 .categories {
-    display: grid;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  padding: 1rem;
+  animation: showUp 0.4s ease-in;
+
+  @media screen and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    padding: 1rem;
-    animation: showUp 0.4s ease-in;
+  }
 
-    li {
-        grid-column: span 1;
-        grid-row: span 2;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  li {
+    grid-column: span 1;
+    grid-row: span 2;
 
-        .img-container {
-            position: relative;
-            overflow: hidden;
+    .img-container {
+      position: relative;
+      overflow: hidden;
 
-            &::before {
-                @include pseudo;
-                padding-top: 177.77%;
-            }
+      &::before {
+        @include pseudo;
+        padding-top: 177.77%;
+      }
 
-            img {
-                display: block;
-                height: 100%;
-                width: auto;
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-            }
+      img {
+        display: block;
+        height: 100%;
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-            .after {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                top: 0; left: 0; bottom: 0; right: 0;
-                background: rgba(0,0,0,0.3);
-                transition: opacity 0.3s ease-in;
+      .after {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.3);
+        transition: opacity 0.3s ease-in;
 
-                &:hover {
-                    opacity: 0;
-                }
-
-                span {
-                    color: white;
-                    font-size: 2em;
-                }
-            }
-
-
+        &:hover {
+          opacity: 0;
         }
+
+        span {
+          color: white;
+          font-size: 2em;
+        }
+      }
     }
+  }
 }
 
-@keyframes showUp{
-    from {
-        opacity: 0.2;
-    }
+@keyframes showUp {
+  from {
+    opacity: 0.2;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
